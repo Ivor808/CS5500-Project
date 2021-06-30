@@ -1,4 +1,4 @@
-package com.CS5500.springbootinfrastructure;
+package com.CS5500.springbootinfrastructure.dao;
 
 import javax.persistence.*;
 import java.sql.Date;

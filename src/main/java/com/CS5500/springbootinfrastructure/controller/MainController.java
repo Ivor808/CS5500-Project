@@ -1,6 +1,8 @@
-package com.CS5500.springbootinfrastructure;
+package com.CS5500.springbootinfrastructure.controller;
 
 
+import com.CS5500.springbootinfrastructure.dao.DateLog;
+import com.CS5500.springbootinfrastructure.repos.DateLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
