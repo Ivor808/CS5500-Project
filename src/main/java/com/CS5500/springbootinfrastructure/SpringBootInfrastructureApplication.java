@@ -17,6 +17,8 @@ import java.sql.Date;
 public class SpringBootInfrastructureApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(SpringBootInfrastructureApplication.class);
+	DateLogRepository dlRepo;
+	SegmentRepository sgRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootInfrastructureApplication.class, args);
@@ -24,7 +26,7 @@ public class SpringBootInfrastructureApplication {
 
 
 	@Bean
-	public CommandLineRunner demo(DateLogRepository dlRepo, SegmentRepository sgRepo) {
+	public CommandLineRunner populateFromJSON() {
 		return (args) -> {
 			Segment seg = new Segment();
 			sgRepo.save(seg);
