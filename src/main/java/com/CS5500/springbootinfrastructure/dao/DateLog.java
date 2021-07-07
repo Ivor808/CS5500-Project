@@ -12,9 +12,22 @@ public class DateLog {
     private Integer id;*/
 
     @Id
-    private Date dateOf;
+    @Column(name = "date_of")
+    private Date date;
 
     private Integer caloriesIdle;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "f_seg_id")
+    private Segment segment;
+
+    public Segment getSegment() {
+        return segment;
+    }
+
+    public void setSegment(Segment segment) {
+        this.segment = segment;
+    }
 
 
 
@@ -32,12 +45,12 @@ public class DateLog {
         this.id = id;
     }*/
 
-    public Date getDateOf() {
-        return dateOf;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDateOf(Date dateOf) {
-        this.dateOf = dateOf;
+    public void setDate(Date dateOf) {
+        this.date = dateOf;
     }
 
     public Integer getCaloriesIdle() {

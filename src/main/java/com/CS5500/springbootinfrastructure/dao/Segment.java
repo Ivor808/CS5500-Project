@@ -1,17 +1,18 @@
 package com.CS5500.springbootinfrastructure.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "segment")
 public class Segment {
 
   @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   private Integer seg_id;
-  private String type;
-  private String field;
+
+  @OneToMany(mappedBy = "segment")
+  private Set<Type> type;
 
   public Integer getSeg_id() {
     return seg_id;
@@ -21,19 +22,12 @@ public class Segment {
     this.seg_id = seg_id;
   }
 
-  public String getType() {
+  public Set<Type> getType() {
     return type;
   }
 
-  public void setType(String move) {
+  public void setType(Set<Type> move) {
     this.type = move;
   }
 
-  public String getField() {
-    return field;
-  }
-
-  public void setField(String field) {
-    this.field = field;
-  }
 }

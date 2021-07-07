@@ -1,20 +1,18 @@
 package com.CS5500.springbootinfrastructure.dao;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="kind",
-    discriminatorType = DiscriminatorType.INTEGER)
+    discriminatorType = DiscriminatorType.STRING)
 public class Type {
   @Id
+  @GeneratedValue(strategy= GenerationType.AUTO)
   private long typeID;
 
+  @ManyToOne
+  @JoinColumn(name = "f_seg_id")
+  private Segment segment;
 
 }
