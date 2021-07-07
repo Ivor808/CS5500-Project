@@ -9,23 +9,25 @@ import java.text.SimpleDateFormat;
 @Entity
 @DiscriminatorValue("2")
 public class Place extends Type{
-    private Integer place_id;
+    public Integer id;
     private SimpleDateFormat start_time;
     private SimpleDateFormat end_time;
     private String name;
-    private String place_type;
-    private Double lat;
-    private Double lon;
-    private String foursquareId;
+    public String type;
+    public Location location;
+
+    public String foursquareId;
+    public String[] foursquareCategoryIds;
+    public String facebookPlaceId;
 
 
     @Id
     public Integer getPlace_id() {
-        return place_id;
+        return id;
     }
 
     public void setPlace_id(Integer place_id) {
-        this.place_id = place_id;
+        this.id = place_id;
     }
 
     public SimpleDateFormat getStart_time() {
@@ -53,27 +55,11 @@ public class Place extends Type{
     }
 
     public String getPlace_type() {
-        return place_type;
+        return type;
     }
 
     public void setPlace_type(String place_type) {
-        this.place_type = place_type;
-    }
-
-    public Double getLat() {
-        return lat;
-    }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
-
-    public Double getLon() {
-        return lon;
-    }
-
-    public void setLon(Double lon) {
-        this.lon = lon;
+        this.type = place_type;
     }
 
     public String getFoursquareId() {

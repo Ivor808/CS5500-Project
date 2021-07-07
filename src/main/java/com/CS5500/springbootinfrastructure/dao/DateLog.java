@@ -12,15 +12,18 @@ public class DateLog {
     private Integer id;*/
 
     @Id
-    private Date dateOf;
+    @Column(name = "date_of")
+    public String date;
 
-    private Integer caloriesIdle;
+    public Summary[] summary;
+    public Segment[] segments;
+    public Integer caloriesIdle;
 
 
 
-    private Timestamp lastUpdate;
+    public String lastUpdate; //change to Timestamp format later
 
-    public void setLastUpdate(Timestamp lastUpdate) {
+    public void setLastUpdate(String lastUpdate) { //make String to Timestamp
         this.lastUpdate = lastUpdate;
     }
 
@@ -32,12 +35,12 @@ public class DateLog {
         this.id = id;
     }*/
 
-    public Date getDateOf() {
-        return dateOf;
+    public String getDateOf() {
+        return date;
     }
 
-    public void setDateOf(Date dateOf) {
-        this.dateOf = dateOf;
+    public void setDateOf(String dateOf) {
+        this.date = dateOf;
     }
 
     public Integer getCaloriesIdle() {
@@ -48,11 +51,11 @@ public class DateLog {
         this.caloriesIdle = caloriesIdle;
     }
 
-    public Timestamp getLastUpdate() {
+    public String getLastUpdate() {
         return lastUpdate;
     }
 
     public void timestampLastUpdate() {
-        this.lastUpdate = new Timestamp(System.currentTimeMillis());
+        this.lastUpdate = lastUpdate;//new Timestamp(System.currentTimeMillis());
     }
 }

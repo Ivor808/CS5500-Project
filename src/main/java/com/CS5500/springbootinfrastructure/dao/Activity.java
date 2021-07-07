@@ -4,13 +4,19 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.criteria.CriteriaBuilder;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue("1")
+@DiscriminatorValue("3")
 public class Activity {
     private Integer act_id;
+    //public for parsing
+    public String activity;
+    public String startTime;
+    public String endTime;
+    public String[] trackPoints;
     private String group;
     private Boolean manual;
     private SimpleDateFormat start_time;

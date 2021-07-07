@@ -27,7 +27,7 @@ public class MainController {
         // @RequestParam means it is a parameter from the GET or POST request
 
         DateLog n = new DateLog();
-        n.setDateOf(dateOf);
+        //n.setDateOf(dateOf);
         n.setCaloriesIdle(caloriesIdle);
         n.timestampLastUpdate();
         dateLogRepository.save(n);
