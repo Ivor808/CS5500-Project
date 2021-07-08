@@ -1,4 +1,4 @@
-package com.CS5500.springbootinfrastructure.formatter;
+package com.CS5500.springbootinfrastructure.parser;
 
 import java.sql.Timestamp;
 

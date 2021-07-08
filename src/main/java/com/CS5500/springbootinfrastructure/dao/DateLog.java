@@ -3,6 +3,7 @@ package com.CS5500.springbootinfrastructure.dao;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import com.CS5500.springbootinfrastructure.helper.DateLog_helper;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "date_log")
@@ -20,6 +21,16 @@ public class DateLog {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "f_seg_id")
     private Segment segment;
+
+    public DateLog(DateLog_helper helper) {
+        DateLog dl = new DateLog();
+        dl.setDate(new DateFormatterImplhelper.getDateOf());
+
+    }
+
+    public DateLog() {
+
+    }
 
     public Segment getSegment() {
         return segment;
