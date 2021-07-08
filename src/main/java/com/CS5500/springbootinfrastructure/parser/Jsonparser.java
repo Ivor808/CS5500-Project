@@ -1,11 +1,16 @@
 package com.CS5500.springbootinfrastructure.parser;
 
-import com.CS5500.springbootinfrastructure.dao.Activity_helper;
-import com.CS5500.springbootinfrastructure.dao.DateLog_helper;
-import com.CS5500.springbootinfrastructure.dao.Segment_helper;
-import com.CS5500.springbootinfrastructure.dao.Summary_helper;
+import com.CS5500.springbootinfrastructure.dao.DateLog;
+import com.CS5500.springbootinfrastructure.dao.Type;
+import com.CS5500.springbootinfrastructure.helper.Activity_helper;
+import com.CS5500.springbootinfrastructure.helper.DateLog_helper;
+import com.CS5500.springbootinfrastructure.helper.Segment_helper;
+import com.CS5500.springbootinfrastructure.helper.Summary_helper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
+import com.fasterxml.jackson.databind.jsontype.PolymorphicTypeValidator;
 
 import java.io.*;
 import java.text.ParseException;
@@ -16,19 +21,32 @@ import java.util.List;
 public class Jsonparser {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        InputStream inputStream = new FileInputStream(new File("src//main//resources//storyline.json"));
-        TypeReference<List<DateLog_helper>> typeReference = new TypeReference<>() {};
-        TypeReference<List<Summary_helper>> placeReference = new TypeReference<>() {};
+//        InputStream inputStream = new FileInputStream(new File("src//main//resources//storyline.json"));
+//        TypeReference<List<DateLog_helper>> typeReference = new TypeReference<>() {};
+//        TypeReference<List<Summary_helper>> placeReference = new TypeReference<>() {};
 
-        DateLog_helper[] DateLogList = mapper.readValue(inputStream, DateLog_helper[].class);
+        PolymorphicTypeValidator ptv = BasicPolymorphicTypeValidator
+                .builder()
+                .allowIfBaseType(Type.class)
+                .build();
+
+
+        mapper.activateDefaultTyping(ptv, ObjectMapper.DefaultTyping.NON_FINAL);
+
+        DateLog[] dates = new ObjectMapper().readerFor(DateLog[].class).readValue(new File("src//main//resources//storyline.json"));
+
+        for (DateLog itr : dates) {
+            System.out.println(itr.toString());
+        }
+        /*DateLog_helper[] DateLogList = mapper.readValue(inputStream, DateLog_helper[].class);
 
         //Summary array
         Summary_helper[] summ;
         List<Summary_helper[]> SummaryList = new ArrayList<>();
 
         //Segment array
-        Segment_helper[] seg;
-        List<Segment_helper[]> SegmentList = new ArrayList<>();
+        Segment_helper seg;
+        List<Segment_helper> SegmentList = new ArrayList<>();
 
         //Activity array
         Activity_helper[] act;
@@ -47,9 +65,9 @@ public class Jsonparser {
             SegmentList.add(seg);
 
             i++;
-        }
+        }*/
 
-        //extract items from summary array, change j to access different items
+        /*//extract items from summary array, change j to access different items
         for (i = 0; i < SummaryList.size(); i++){
             Summary_helper[] iter = SummaryList.get(i);
             if (iter != null) {
@@ -63,7 +81,7 @@ public class Jsonparser {
         //type is always place or move
         //also extracting activity from the segment
         for (i = 0; i < SegmentList.size(); i++){
-            Segment_helper[] iter = SegmentList.get(i);
+            Segment_helper iter = SegmentList.get(i);
             if (iter != null) {
                 for (int j = 0; j < iter.length; j++) {
                     //System.out.print("Segment is : " + iter[j].type + "\n");
@@ -96,7 +114,7 @@ public class Jsonparser {
 
                 }
             }
-        }
+        }*/
 
     }
 }

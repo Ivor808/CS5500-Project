@@ -1,5 +1,9 @@
 package com.CS5500.springbootinfrastructure.dao;
 
+import com.CS5500.springbootinfrastructure.helper.Activity_helper;
+import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -14,7 +18,9 @@ public class Activity {
     private Integer act_id;
 
     //public for parsing
+    @JsonProperty("activity")
     private String act_type;
+
     private Timestamp startTime;
     private Timestamp endTime;
 
@@ -22,16 +28,45 @@ public class Activity {
     private List<String> trackPoints;
 
 
+    @JsonProperty("startTime")
+    @SuppressWarnings("unchecked")
+    private void startTimeDeserializer(String startTime) {
+        this.startTime = new DataFormatterImpl().convertTimestamp(startTime);
+    }
+
+    @JsonProperty("endTime")
+    @SuppressWarnings("unchecked")
+    private void endTimeDeserializer(String endTime) {
+        this.endTime = new DataFormatterImpl().convertTimestamp(endTime);
+    }
+
+
+
     @ManyToOne
     @JoinColumn(name = "f_type_id")
     private Type type;
 
-    private String actGroup;
+    private String group;
     private Boolean manual;
     private Float duration;
     private Float distance;
     private Integer steps;
     private Integer calories;
+
+    public Activity(Activity_helper helper) {
+        Activity act = new Activity();
+        act.setAct_id(helper.getAct_id());
+        // act.setType(new Type(helper.getType()));
+        act.setGroup(helper.getGroup());
+        act.setManual(helper.getManual());
+        act.setDuration(helper.getDuration());
+        act.setSteps(helper.getSteps());
+        act.setCalories(helper.getCalories());
+    }
+
+    public Activity() {
+
+    }
 
     public void setAct_id(Integer act_id) {
         this.act_id = act_id;
@@ -48,12 +83,12 @@ public class Activity {
 
     public Integer getAct_id() { return act_id; }
 
-    public String getActGroup() {
-        return actGroup;
+    public String getGroup() {
+        return group;
     }
 
-    public void setActGroup(String group) {
-        this.actGroup = group;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     public Boolean getManual() {
@@ -94,14 +129,6 @@ public class Activity {
 
     public void setSteps(Integer steps) {
         this.steps = steps;
-    }
-
-    public String getAct_type() {
-        return act_type;
-    }
-
-    public void setAct_type(String act_type) {
-        this.act_type = act_type;
     }
 
     public Timestamp getStartTime() {

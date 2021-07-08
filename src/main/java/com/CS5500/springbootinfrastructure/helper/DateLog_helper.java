@@ -1,28 +1,42 @@
 package com.CS5500.springbootinfrastructure.helper;
 
-import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
-
 public class DateLog_helper {
 
     public String date;
 
     public Summary_helper[] summary;
-    public Segment_helper[] segments;
+    // public Segment_helper[] segments;
     public Integer caloriesIdle;
     public String lastUpdate; //change to Timestamp format later
+
+    public Segment_helper getSegments() {
+        return segments;
+    }
+
+    public void setSegments(Segment_helper segments) {
+        this.segments = segments;
+    }
+
+    public Summary_helper[] getSummary() {
+        return summary;
+    }
+
+    public void setSummary(Summary_helper[] summary) {
+        this.summary = summary;
+    }
+
+    public Segment_helper segments;
 
     public void setLastUpdate(String lastUpdate) { //make String to Timestamp
         this.lastUpdate = lastUpdate;
     }
 
-    public String getDateOf() {
+    public String getDate() {
         return date;
     }
 
-    public void setDateOf(String dateOf) {
-        this.date = dateOf;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Integer getCaloriesIdle() {
