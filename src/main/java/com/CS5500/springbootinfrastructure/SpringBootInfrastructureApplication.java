@@ -4,10 +4,7 @@ import com.CS5500.springbootinfrastructure.dao.DateLog;
 import com.CS5500.springbootinfrastructure.dao.Segment;
 import com.CS5500.springbootinfrastructure.repos.DateLogRepository;
 import com.CS5500.springbootinfrastructure.repos.SegmentRepository;
-import net.minidev.json.JSONArray;
-import org.apache.tomcat.jni.File;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.apache.tomcat.util.json.JSONParser;
+import net.minidev.json.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 
 @SpringBootApplication
@@ -35,6 +31,7 @@ public class SpringBootInfrastructureApplication {
 	public CommandLineRunner populateFromJSON() {
 		return (args) -> {
 
+			Object obj = new JSONParser().parse(new FileReader("JSONExample.json"));
 			// String exampleRequest = FileUtils.readFileToString(new File("exampleJsonRequest.json"), StandardCharsets.UTF_8);
 
 			/*JsonParser parser = new JSONParser();
