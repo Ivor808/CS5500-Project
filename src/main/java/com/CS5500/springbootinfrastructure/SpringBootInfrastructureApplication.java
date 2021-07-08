@@ -31,10 +31,14 @@ public class SpringBootInfrastructureApplication {
 	public CommandLineRunner saveToRemote(DateLogRepository dlRepo) {
 		return (args) -> {
 
-			DateLog[] dates = Jsonparser.getPOJO();
+			/*DateLog[] dates = Jsonparser.getPOJO();
+			int count = 0;
 			for (DateLog log : dates) {
+				if (count > 10)
+					break;
 				dlRepo.save(log);
-			}
+				count++;
+			}*/
 
 			log.info("Save ended");
 		};
