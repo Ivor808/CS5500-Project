@@ -28,6 +28,17 @@ public class Type {
     return typeID;
   }
 
+  @Override
+  public String toString() {
+    return "Type{" +
+            "typeID=" + typeID +
+            ", activities=" + activities.toString() +
+            ", startTime=" + startTime.toString() +
+            ", endTime=" + endTime.toString() +
+            ", lastUpdate=" + lastUpdate.toString() +
+            '}';
+  }
+
   public void setTypeID(long typeID) {
     this.typeID = typeID;
   }
@@ -89,6 +100,15 @@ public class Type {
   @ManyToOne
   @JoinColumn(name = "f_date", nullable = false)
   private DateLog date;
+
+  @JsonProperty("activities")
+  @SuppressWarnings("unchecked")
+  private void fkeyActivitiesSerializer(List<Activity> activities) {
+    this.activities = activities;
+    for (Activity activity : this.activities) {
+      activity.setType(this);
+    }
+  }
 
   @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
   private List<Activity> activities;

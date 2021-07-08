@@ -41,14 +41,24 @@ public class DateLog {
     }
 
     @OneToMany(mappedBy = "date", cascade = CascadeType.ALL)
-    @JsonProperty("segments")
     private List<Type> types;
+
+    @JsonProperty("segments")
+    @SuppressWarnings("unchecked")
+    private void fkeySegmentsSerializer(List<Type> types) {
+        this.types = types;
+        for (Type type : this.types) {
+            type.setDate(this);
+        }
+    }
+
 
     @Override
     public String toString() {
         return "DateLog{" +
-                "date=" + date +
+                "date=" + date.toString() +
                 ", caloriesIdle=" + caloriesIdle +
+                ", types=" + types.toString() +
                 ", lastUpdate=" + lastUpdate.toString() +
                 '}';
     }

@@ -12,6 +12,14 @@ public class Location {
     public Double lat;
     public Double lon;
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "lat=" + lat +
+                ", lon=" + lon +
+                '}';
+    }
+
     public Double getLat() {
         return lat;
     }

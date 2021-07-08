@@ -1,6 +1,7 @@
 package com.CS5500.springbootinfrastructure.dao;
 
 
+import com.CS5500.springbootinfrastructure.helper.CheckNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -12,14 +13,29 @@ import java.util.Map;
 @DiscriminatorValue("place")
 @JsonTypeName("place")
 public class Place extends Type{
-
     private String name;
+
     private String type;
+
+    private Integer place_id;
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", location=" + location.toString() +
+                ", foursquareId='" + foursquareId + '\'' +
+                ", foursquareCategoryIds=" + CheckNull.toString(foursquareCategoryIds) +
+                ", facebookPlaceId='" + facebookPlaceId + '\'' +
+                ", typeID=" + typeID +
+                '}';
+    }
 
     @JsonProperty("place")
     @SuppressWarnings("unchecked")
     private void placeDeserializer(Map<String, Object> place) {
-        this.typeID = (Integer) place.get("id");
+        this.place_id = (Integer) place.get("id");
         this.type = (String) place.get("type");
         Double lat = ((Map<String, Double>) place.get("location")).get("lat");
         Double lon = ((Map<String, Double>) place.get("location")).get("lon");
@@ -27,6 +43,8 @@ public class Place extends Type{
         this.location = new Location();
         this.location.setLat(lat);
         this.location.setLon(lon);
+
+        this.name = (String) place.get("name");
     }
 
     @Embedded

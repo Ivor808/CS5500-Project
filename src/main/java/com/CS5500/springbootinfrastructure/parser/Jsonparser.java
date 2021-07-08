@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Jsonparser {
-    public static void main(String[] args) throws IOException {
+    public static DateLog[] getPOJO() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
 //        InputStream inputStream = new FileInputStream(new File("src//main//resources//storyline.json"));
 //        TypeReference<List<DateLog_helper>> typeReference = new TypeReference<>() {};
@@ -35,9 +35,15 @@ public class Jsonparser {
 
         DateLog[] dates = new ObjectMapper().readerFor(DateLog[].class).readValue(new File("src//main//resources//storyline.json"));
 
+        return dates;
+        /*int count = 0;
         for (DateLog itr : dates) {
+            if (count > 10) {
+                break;
+            }
             System.out.println(itr.toString());
-        }
+            count++;
+        }*/
         /*DateLog_helper[] DateLogList = mapper.readValue(inputStream, DateLog_helper[].class);
 
         //Summary array

@@ -1,6 +1,7 @@
 package com.CS5500.springbootinfrastructure.dao;
 
 import com.CS5500.springbootinfrastructure.helper.Activity_helper;
+import com.CS5500.springbootinfrastructure.helper.CheckNull;
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,6 +13,22 @@ import java.util.List;
 @Table(name = "activity")
 public class Activity {
 
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "act_id=" + act_id +
+                ", act_type='" + act_type + '\'' +
+                ", startTime=" + CheckNull.toString(startTime) +
+                ", endTime=" + CheckNull.toString(endTime) +
+                ", trackPoints=" + trackPoints.toString() +
+                ", group='" + act_group + '\'' +
+                ", manual=" + manual +
+                ", duration=" + duration +
+                ", distance=" + distance +
+                ", steps=" + steps +
+                ", calories=" + calories +
+                '}';
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +63,9 @@ public class Activity {
     @JoinColumn(name = "f_type_id")
     private Type type;
 
-    private String group;
+    @JsonProperty("group")
+    private String act_group;
+
     private Boolean manual;
     private Float duration;
     private Float distance;
@@ -57,7 +76,7 @@ public class Activity {
         Activity act = new Activity();
         act.setAct_id(helper.getAct_id());
         // act.setType(new Type(helper.getType()));
-        act.setGroup(helper.getGroup());
+        act.setAct_group(helper.getGroup());
         act.setManual(helper.getManual());
         act.setDuration(helper.getDuration());
         act.setSteps(helper.getSteps());
@@ -83,12 +102,12 @@ public class Activity {
 
     public Integer getAct_id() { return act_id; }
 
-    public String getGroup() {
-        return group;
+    public String getAct_group() {
+        return act_group;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setAct_group(String group) {
+        this.act_group = group;
     }
 
     public Boolean getManual() {
