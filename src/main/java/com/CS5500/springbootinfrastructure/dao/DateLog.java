@@ -13,33 +13,40 @@ public class DateLog {
 
     @Id
     @Column(name = "date_of")
-    public String date;
+    private Date date;
 
-    public Summary[] summary;
-    public Segment[] segments;
-    public Integer caloriesIdle;
+    private Integer caloriesIdle;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "f_seg_id")
+    private Segment segment;
 
+    public Segment getSegment() {
+        return segment;
+    }
 
-    public String lastUpdate; //change to Timestamp format later
+    public void setSegment(Segment segment) {
+        this.segment = segment;
+    }
 
-    public void setLastUpdate(String lastUpdate) { //make String to Timestamp
+    private Timestamp lastUpdate;
+
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
     /*public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }*/
 
-    public String getDateOf() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDateOf(String dateOf) {
+    public void setDate(Date dateOf) {
         this.date = dateOf;
     }
 
@@ -51,11 +58,11 @@ public class DateLog {
         this.caloriesIdle = caloriesIdle;
     }
 
-    public String getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
     public void timestampLastUpdate() {
-        this.lastUpdate = lastUpdate;//new Timestamp(System.currentTimeMillis());
+        this.lastUpdate = new Timestamp(System.currentTimeMillis());
     }
 }

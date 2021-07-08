@@ -1,16 +1,14 @@
 package com.CS5500.springbootinfrastructure.dao;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Entity
-@Table(name = "location")
+@Embeddable
 public class Location {
-
-    @Id
     public Double lat;
     public Double lon;
 

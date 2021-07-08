@@ -14,7 +14,7 @@ public class Jsonparser {
         ObjectMapper mapper = new ObjectMapper();
         InputStream inputStream = new FileInputStream(new File("src//main//resources//storyline.json"));
         TypeReference<List<DateLog_helper>> typeReference = new TypeReference<>() {};
-        TypeReference<List<Summary_helper>> placeReference = new TypeReference<>() {};
+        //TypeReference<List<Summary_helper>> placeReference = new TypeReference<>() {};
 
         DateLog_helper[] DateLogList = mapper.readValue(inputStream, DateLog_helper[].class);
 

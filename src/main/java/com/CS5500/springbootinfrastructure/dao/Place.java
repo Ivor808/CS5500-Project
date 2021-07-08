@@ -1,50 +1,50 @@
 package com.CS5500.springbootinfrastructure.dao;
 
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.text.SimpleDateFormat;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@DiscriminatorValue("2")
+@DiscriminatorValue("place")
 public class Place extends Type{
-    public Integer id;
-    private SimpleDateFormat start_time;
-    private SimpleDateFormat end_time;
+
     private String name;
-    public String type;
-    public Location location;
+    private String type;
 
-    public String foursquareId;
-    public String[] foursquareCategoryIds;
-    public String facebookPlaceId;
+    @Embedded
+    private Location location;
 
+    private String foursquareId;
 
-    @Id
-    public Integer getPlace_id() {
-        return id;
+    @ElementCollection
+    private List<String> foursquareCategoryIds;
+
+    public Location getLocation() {
+        return location;
     }
 
-    public void setPlace_id(Integer place_id) {
-        this.id = place_id;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public SimpleDateFormat getStart_time() {
-        return start_time;
+    public List<String> getFoursquareCategoryIds() {
+        return foursquareCategoryIds;
     }
 
-    public void setStart_time(SimpleDateFormat start_time) {
-        this.start_time = start_time;
+    public void setFoursquareCategoryIds(List<String> foursquareCategoryIds) {
+        this.foursquareCategoryIds = foursquareCategoryIds;
     }
 
-    public SimpleDateFormat getEnd_time() {
-        return end_time;
+    public String getFacebookPlaceId() {
+        return facebookPlaceId;
     }
 
-    public void setEnd_time(SimpleDateFormat end_time) {
-        this.end_time = end_time;
+    public void setFacebookPlaceId(String facebookPlaceId) {
+        this.facebookPlaceId = facebookPlaceId;
     }
+
+    private String facebookPlaceId;
+
 
     public String getName() {
         return name;
@@ -54,11 +54,11 @@ public class Place extends Type{
         this.name = name;
     }
 
-    public String getPlace_type() {
+    public String getType() {
         return type;
     }
 
-    public void setPlace_type(String place_type) {
+    public void setType(String place_type) {
         this.type = place_type;
     }
 
