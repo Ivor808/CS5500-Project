@@ -14,6 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.io.IOException;
 
+/**
+ * Uncomment and run the saveToRemote function to populate the database with the
+ * first 11 entries
+ */
 @Configuration
 @EnableJpaRepositories
 @SpringBootApplication

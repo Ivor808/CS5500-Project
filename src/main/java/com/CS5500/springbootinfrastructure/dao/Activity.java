@@ -1,6 +1,5 @@
 package com.CS5500.springbootinfrastructure.dao;
 
-import com.CS5500.springbootinfrastructure.helper.Activity_helper;
 import com.CS5500.springbootinfrastructure.helper.CheckNull;
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -71,17 +70,6 @@ public class Activity {
     private Float distance;
     private Integer steps;
     private Integer calories;
-
-    public Activity(Activity_helper helper) {
-        Activity act = new Activity();
-        act.setAct_id(helper.getAct_id());
-        // act.setType(new Type(helper.getType()));
-        act.setAct_group(helper.getGroup());
-        act.setManual(helper.getManual());
-        act.setDuration(helper.getDuration());
-        act.setSteps(helper.getSteps());
-        act.setCalories(helper.getCalories());
-    }
 
     public Activity() {
 

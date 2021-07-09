@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
 
-import com.CS5500.springbootinfrastructure.helper.DateLog_helper;
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
 import com.CS5500.springbootinfrastructure.parser.DateLogFormatterImpl;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -61,17 +59,6 @@ public class DateLog {
                 ", types=" + types.toString() +
                 ", lastUpdate=" + lastUpdate.toString() +
                 '}';
-    }
-
-    public static DateLog convertHelper(DateLog_helper helper) {
-        DateLog dl = new DateLog();
-
-        dl.setDate(new Date(new DataFormatterImpl().convertTimestamp(helper.getDate()).getTime()));
-        dl.setCaloriesIdle(helper.getCaloriesIdle());
-        // dl.setSegments(Segment.convertHelper(helper.getSegments()));
-        dl.setLastUpdate(new DataFormatterImpl().convertTimestamp(helper.getLastUpdate()));
-
-        return dl;
     }
 
     public DateLog() {
