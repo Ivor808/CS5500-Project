@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/activitydb") // This means URL's start with /demo (after Application path)
@@ -36,9 +38,10 @@ public class MainController {
     }
     @GetMapping(path = "/getDateLog")
     public @ResponseBody
-    Iterable<DateLog> getAllUsers() {
+    Iterable<Map<String, Object>> getAllDates() {
         // This returns a JSON or XML with the users
-        return dateLogRepository.findAll();
+        List<Map<String, Object>> data = dateLogRepository.getJSON();
+        return data;
     }
     @GetMapping(path = "/getActivity")
     public @ResponseBody
