@@ -38,9 +38,9 @@ public class SpringBootInfrastructureApplication {
 					break;
 				dlRepo.save(log);
 				count++;
-			}*/
+			}
 
-			log.info("Save ended");
+			log.info("Save ended");*/
 		};
 	}
 }
