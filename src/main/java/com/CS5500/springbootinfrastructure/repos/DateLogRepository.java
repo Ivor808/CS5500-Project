@@ -14,5 +14,8 @@ public interface DateLogRepository extends CrudRepository<DateLog, Integer> {
 
     @Query(value = "select date_of, calories_idle, last_update from date_log",
     nativeQuery = true)
-    List<Map<String, Object>> getJSON();
+    List<Map<String, Object>> getJSONDates();
+
+    @Query(value = "select * from type", nativeQuery = true)
+    List<Map<String, Object>> getJSONTypes();
 }

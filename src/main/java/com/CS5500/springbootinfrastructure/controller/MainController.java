@@ -40,13 +40,13 @@ public class MainController {
     public @ResponseBody
     Iterable<Map<String, Object>> getAllDates() {
         // This returns a JSON or XML with the users
-        List<Map<String, Object>> data = dateLogRepository.getJSON();
+        List<Map<String, Object>> data = dateLogRepository.getJSONDates();
         return data;
     }
     @GetMapping(path = "/getActivity")
     public @ResponseBody
-    Iterable<Activity> getAllActivity() {
-        return activityRepository.findAll();
+    Iterable<Map<String, Object>> getAllActivity() {
+        return dateLogRepository.getJSONTypes();
     }
     @GetMapping(path = "/getMove")
     public @ResponseBody
