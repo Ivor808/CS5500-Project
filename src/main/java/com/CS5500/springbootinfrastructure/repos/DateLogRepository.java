@@ -18,4 +18,13 @@ public interface DateLogRepository extends CrudRepository<DateLog, Integer> {
 
     @Query(value = "select * from type", nativeQuery = true)
     List<Map<String, Object>> getJSONTypes();
+
+    @Query(value = "select * from activity", nativeQuery = true)
+    List<Map<String, Object>> getJSONActivities();
+
+    @Query(value = "select * from type where kind like 'move'", nativeQuery = true)
+    List<Map<String, Object>> getJSONMoves();
+
+    @Query(value = "select * from type where kind like 'place'", nativeQuery = true)
+    List<Map<String, Object>> getJSONPlaces();
 }

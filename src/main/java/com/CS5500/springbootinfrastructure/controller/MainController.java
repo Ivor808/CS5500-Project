@@ -46,17 +46,23 @@ public class MainController {
     @GetMapping(path = "/getActivity")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllActivity() {
-        return dateLogRepository.getJSONTypes();
+        return dateLogRepository.getJSONActivities();
     }
     @GetMapping(path = "/getMove")
     public @ResponseBody
-    Iterable<Move> getAllMove() {
-        return moveRepository.findAll();
+    Iterable<Map<String, Object>> getAllMove() {
+        return dateLogRepository.getJSONMoves();
     }
 
     @GetMapping(path = "/getType")
     public @ResponseBody
-    Iterable getAllType() {
-        return typeRepository.findAll();
+    Iterable<Map<String, Object>> getAllType() {
+        return dateLogRepository.getJSONTypes();
+    }
+
+    @GetMapping(path = "/getPlace")
+    public @ResponseBody
+    Iterable<Map<String, Object>> getAllPlace() {
+        return dateLogRepository.getJSONPlaces();
     }
 }
