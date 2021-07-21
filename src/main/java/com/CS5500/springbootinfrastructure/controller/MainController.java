@@ -4,6 +4,7 @@ import com.CS5500.springbootinfrastructure.dao.Activity;
 import com.CS5500.springbootinfrastructure.dao.DateLog;
 import com.CS5500.springbootinfrastructure.dao.Move;
 import com.CS5500.springbootinfrastructure.repos.*;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +24,14 @@ public class MainController {
     private PlaceRepository placeRepository;
     private TypeRepository typeRepository;
 
-    @PostMapping(path="/add") // Map ONLY POST Requests
+    @PostMapping(path="/addDateLog") // Map ONLY POST Requests
     public @ResponseBody
-    String addNewDateLog (@RequestParam Date dateOf
-            , @RequestParam Integer caloriesIdle) {
+    String addNewDateLog (@RequestParam Integer caloriesIdle) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         DateLog n = new DateLog();
-        n.setDate(dateOf);
+
+        n.setDate(new Date(System.currentTimeMillis()));
         n.setCaloriesIdle(caloriesIdle);
         n.timestampLastUpdate();
         dateLogRepository.save(n);
@@ -65,4 +66,5 @@ public class MainController {
     Iterable<Map<String, Object>> getAllPlace() {
         return dateLogRepository.getJSONPlaces();
     }
+
 }
