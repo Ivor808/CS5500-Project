@@ -24,7 +24,7 @@ public class MainController {
     private PlaceRepository placeRepository;
     private TypeRepository typeRepository;
 
-    @PostMapping(path="/addDateLog") // Map ONLY POST Requests
+    @PostMapping(path="/dateLog") // Map ONLY POST Requests
     public @ResponseBody
     String addNewDateLog (@RequestParam Integer caloriesIdle) {
         // @ResponseBody means the returned String is the response, not a view name
@@ -37,31 +37,40 @@ public class MainController {
         dateLogRepository.save(n);
         return "Saved";
     }
-    @GetMapping(path = "/getDateLog")
+    @GetMapping(path = "/dateLog")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllDates() {
         // This returns a JSON or XML with the users
         List<Map<String, Object>> data = dateLogRepository.getJSONDates();
         return data;
     }
-    @GetMapping(path = "/getActivity")
+
+/*    @GetMapping(path = "/dateLog/{id}")
+    public @ResponseBody
+    DateLog getDate(@PathVariable Integer id) {
+        // This returns a JSON or XML with the users
+        List<Map<String, Object>> data = dateLogRepository.getJSONDates();
+        return data;
+    }*/
+
+    @GetMapping(path = "/activity")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllActivity() {
         return dateLogRepository.getJSONActivities();
     }
-    @GetMapping(path = "/getMove")
+    @GetMapping(path = "/move")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllMove() {
         return dateLogRepository.getJSONMoves();
     }
 
-    @GetMapping(path = "/getType")
+    @GetMapping(path = "/type")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllType() {
         return dateLogRepository.getJSONTypes();
     }
 
-    @GetMapping(path = "/getPlace")
+    @GetMapping(path = "/place")
     public @ResponseBody
     Iterable<Map<String, Object>> getAllPlace() {
         return dateLogRepository.getJSONPlaces();
