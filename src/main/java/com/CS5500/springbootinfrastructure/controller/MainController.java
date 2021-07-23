@@ -36,12 +36,11 @@ public class MainController {
         dateLogRepository.save(n);
         return "Saved";
     }
-    @GetMapping(path = "/getDateLog")
+    @GetMapping(path = "/dateLog")
     public @ResponseBody
-    Iterable<Map<String, Object>> getAllDates() {
+    List<DateLog> getAllDates() {
         // This returns a JSON or XML with the users
-        List<Map<String, Object>> data = dateLogRepository.getJSONDates();
-        return data;
+        return dateLogRepository.getJSONDates();
     }
     @GetMapping(path = "/getActivity")
     public @ResponseBody
