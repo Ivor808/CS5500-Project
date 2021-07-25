@@ -1,9 +1,8 @@
 package com.CS5500.springbootinfrastructure.dao;
 
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
+
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
@@ -12,6 +11,8 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "type_id")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="kind",
@@ -87,6 +88,7 @@ public class Type {
 
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
+  @JsonProperty("type_id")
   protected long typeID;
 
   public DateLog getDate() {

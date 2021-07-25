@@ -2,11 +2,14 @@ package com.CS5500.springbootinfrastructure.dao;
 
 import com.CS5500.springbootinfrastructure.helper.CheckNull;
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+
 
 @Entity
 @Table(name = "activity")
