@@ -42,18 +42,34 @@ class MainControllerTest {
   }
 
   @Test
-  void getAllActivity() {
+  void getAllActivity() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/activity");
+    MvcResult result = mvc.perform(request).andReturn();
+    //shouldnt return anything since we are mocking
+    assertEquals(result.getResponse().getContentLengthLong(),0.0);
   }
 
   @Test
-  void getAllMove() {
+  void getAllMove() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/move");
+    MvcResult result = mvc.perform(request).andReturn();
+    //shouldnt return anything since we are mocking
+    assertEquals(result.getResponse().getContentLengthLong(),0.0);
   }
 
   @Test
-  void getAllType() {
+  void getAllType() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/type");
+    MvcResult result = mvc.perform(request).andReturn();
+    //shouldnt return anything since we are mocking
+    assertEquals(result.getResponse().getContentLengthLong(),0.0);
   }
 
   @Test
-  void getAllPlace() {
+  void getAllPlace() throws Exception {
+    RequestBuilder request = MockMvcRequestBuilders.get("/place");
+    MvcResult result = mvc.perform(request).andReturn();
+    //shouldnt return anything since we are mocking
+    assertEquals(result.getResponse().getContentLengthLong(),0.0);
   }
 }
