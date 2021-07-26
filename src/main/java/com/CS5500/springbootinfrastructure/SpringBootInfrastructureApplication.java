@@ -38,7 +38,7 @@ public class SpringBootInfrastructureApplication {
 			/*DateLog[] dates = Jsonparser.getPOJO();
 			int count = 0;
 			for (DateLog log : dates) {
-				if (count > 10)
+				if (count > 5)
 					break;
 				dlRepo.save(log);
 				count++;

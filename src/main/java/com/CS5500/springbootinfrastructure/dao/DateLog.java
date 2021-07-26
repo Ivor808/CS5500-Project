@@ -7,9 +7,12 @@ import java.util.List;
 
 import com.CS5500.springbootinfrastructure.parser.DataFormatterImpl;
 import com.CS5500.springbootinfrastructure.parser.DateLogFormatterImpl;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "date")
+// @JsonIdentityReference(alwaysAsId = true)
 @JsonIgnoreProperties({ "summary"})
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "date_log")

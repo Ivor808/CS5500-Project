@@ -1,6 +1,6 @@
 package com.CS5500.springbootinfrastructure.repos;
 
-import com.CS5500.springbootinfrastructure.dao.DateLog;
+import com.CS5500.springbootinfrastructure.dao.*;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,19 +12,18 @@ import java.util.Map;
 
 public interface DateLogRepository extends CrudRepository<DateLog, Integer> {
 
-    @Query(value = "select date_of, calories_idle, last_update from date_log",
-    nativeQuery = true)
-    List<Map<String, Object>> getJSONDates();
+    @Query(value = "select d from DateLog d")
+    List<DateLog> getJSONDates();
 
-    @Query(value = "select * from type", nativeQuery = true)
-    List<Map<String, Object>> getJSONTypes();
+    @Query(value = "select t from Type t")
+    List<Type> getJSONTypes();
 
-    @Query(value = "select * from activity", nativeQuery = true)
-    List<Map<String, Object>> getJSONActivities();
+    @Query(value = "select a from Activity a")
+    List<Activity> getJSONActivities();
 
-    @Query(value = "select * from type where kind like 'move'", nativeQuery = true)
-    List<Map<String, Object>> getJSONMoves();
+    @Query(value = "select m from Move m")
+    List<Move> getJSONMoves();
 
-    @Query(value = "select * from type where kind like 'place'", nativeQuery = true)
-    List<Map<String, Object>> getJSONPlaces();
+    @Query(value = "select p from Place p")
+    List<Place> getJSONPlaces();
 }
