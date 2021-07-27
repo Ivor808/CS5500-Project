@@ -6,7 +6,7 @@ We have used a remote database. You can look at its properties in the src/main/r
 remote database is down or the data has been erased, follow the steps below to make the program work on your local MySQL server:
 
 1) Edit the application properties to fit your local MySQL server's configurations.
-2) Uncomment the code in the saveToRemote function in the SpringbootInfrastructureApplication class. It currently saves the first 11 records but you can
+2) Uncomment the code in the saveToRemote function in the SpringbootInfrastructureApplication class. It currently saves the first 5 records but you can
 modify the code in order to save more records.
 3) Run the springboot application. This will execute DDL commands and you will have a populated schema on your local server.
 
@@ -18,11 +18,11 @@ That's it! The remote database has been prepopulated using the commented code in
 You can use the following REST endpoints to query the data (all of them are get operations)
 
 REST endpoints (they are functional):
-Get all the date objects: http://localhost:8080/activitydb/getDateLog
-Get all the activity objects: http://localhost:8080/activitydb/getActivity
-Get all the move objects: http://localhost:8080/activitydb/getMove
-Get all the place objects: http://localhost:8080/activitydb/getPlace
-Get all the type objects: http://localhost:8080/activitydb/getType
+Get all the date objects: http://localhost:8080/activitydb/datelog
+Get all the activity objects: http://localhost:8080/activitydb/activity
+Get all the move objects: http://localhost:8080/activitydb/move
+Get all the place objects: http://localhost:8080/activitydb/place
+Get all the type objects: http://localhost:8080/activitydb/type
 
 
 Resources:
