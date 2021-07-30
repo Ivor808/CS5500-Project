@@ -11,5 +11,8 @@ import java.sql.Date;
 @JsonTypeName("move")
 public class Move extends Type{
 
-
+    @Override
+    public String getKind() {
+        return "Move";
+    }
 }

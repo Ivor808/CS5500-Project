@@ -9,4 +9,9 @@ import javax.persistence.Entity;
 @DiscriminatorValue("off")
 @JsonTypeName("off")
 public class Off extends Type {
+
+    @Override
+    public String getKind() {
+        return "Off";
+    }
 }

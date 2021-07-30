@@ -4,13 +4,14 @@ import com.CS5500.springbootinfrastructure.dao.*;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface DateLogRepository extends CrudRepository<DateLog, Integer> {
+public interface DateLogRepository extends CrudRepository<DateLog, Date> {
 
     @Query(value = "select d from DateLog d")
     List<DateLog> getJSONDates();

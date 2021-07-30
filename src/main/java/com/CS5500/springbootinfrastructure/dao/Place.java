@@ -20,6 +20,11 @@ public class Place extends Type{
     private Integer place_id;
 
     @Override
+    public String getKind() {
+        return "Place";
+    }
+
+    @Override
     public String toString() {
         return "Place{" +
                 "name='" + name + '\'' +

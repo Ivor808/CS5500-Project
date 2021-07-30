@@ -33,6 +33,7 @@ public class MainController {
         dateLogRepository.save(n);
         return "Saved";
     }
+
     @GetMapping(path = "/datelog")
     public @ResponseBody
     List<DateLog> getAllDates() {

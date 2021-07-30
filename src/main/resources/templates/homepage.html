@@ -10,6 +10,7 @@
         <th th:text="${log.getDate()}"></th>
         <th th:text="${log.getCaloriesIdle()}"></th>
         <th th:text="${log.getLastUpdate()}">Age</th>
+        <th><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></th>
     </tr>
 </table>
 </body>
