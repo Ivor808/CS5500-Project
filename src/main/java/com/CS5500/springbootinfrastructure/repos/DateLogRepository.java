@@ -19,6 +19,9 @@ public interface DateLogRepository extends CrudRepository<DateLog, Date> {
     @Query(value = "select t from Type t")
     List<Type> getJSONTypes();
 
+    @Query(value = "select t from Type t where t.typeID = ?1")
+    Type getTypeById(long tid);
+
     @Query(value = "select a from Activity a")
     List<Activity> getJSONActivities();
 

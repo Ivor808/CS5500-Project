@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activities For Type</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Type Id</th>
+        <th>Group</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Calories</th>
+        <th>Distance</th>
+        <th>Duration</th>
+        <th>Manual</th>
+        <th>Steps</th>
+    </tr>
+    <tr th:each="act : ${activitiesForId}">
+        <td th:text="${act.getAct_id()}"></td>
+        <td th:text="${act.getType().getTypeID()}"></td>
+        <td th:text="${act.getAct_group()}"></td>
+        <td th:text="${act.getStartTime()}">Age</td>
+        <td th:text="${act.getEndTime()}"></td>
+        <td th:text="${act.getCalories()}"></td>
+        <td th:text="${act.getDistance()}"></td>
+        <td th:text="${act.getDuration()}"></td>
+        <td th:text="${act.getManual()}"></td>
+        <td th:text="${act.getSteps()}"></td>
+    </tr>
+</table>
+</body>
+</html>

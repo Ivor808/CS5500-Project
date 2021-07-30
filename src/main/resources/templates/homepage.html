@@ -6,11 +6,16 @@
 </head>
 <body>
 <table style="width:100%">
+    <tr>
+        <th>Date</th>
+        <th>Calories Idle</th>
+        <th>Last Update</th>
+    </tr>
     <tr th:each="log : ${allDates}">
-        <th th:text="${log.getDate()}"></th>
-        <th th:text="${log.getCaloriesIdle()}"></th>
-        <th th:text="${log.getLastUpdate()}">Age</th>
-        <th><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></th>
+        <td th:text="${log.getDate()}"></td>
+        <td th:text="${log.getCaloriesIdle()}"></td>
+        <td th:text="${log.getLastUpdate()}">Age</td>
+        <td><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></td>
     </tr>
 </table>
 </body>
