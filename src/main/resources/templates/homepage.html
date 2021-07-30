@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Data</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr th:each="log : ${allDates}">
+        <th th:text="${log.getDate()}"></th>
+        <th th:text="${log.getCaloriesIdle()}"></th>
+        <th th:text="${log.getLastUpdate()}">Age</th>
+    </tr>
+</table>
+</body>
+</html>
