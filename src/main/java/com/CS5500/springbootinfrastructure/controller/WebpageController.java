@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Date;
 import java.util.List;
@@ -19,6 +21,28 @@ public class WebpageController {
 
     @Autowired
     private DateLogRepository dateRepo;
+
+    @PostMapping("/records/add-record")
+    public String greetingSubmit(@ModelAttribute DateLogContModel newLog, Model model) {
+        model.addAttribute("newLog", newLog);
+
+        DateLog dl = new DateLog();
+        dl.setDate(Date.valueOf(newLog.getYyyy() + "-"
+        + newLog.getMm() + "-"
+        + newLog.getDd()));
+        dl.setCaloriesIdle(newLog.getCaloriesIdle());
+        dl.timestampLastUpdate();
+
+        dateRepo.save(dl);
+
+        return "save_success";
+    }
+
+    @GetMapping("/records/add-record")
+    public String addRecordPage(Model model) {
+        model.addAttribute("newLog", new DateLogContModel());
+        return "date_post";
+    }
 
     @GetMapping(path="/records")
     public String fetchHomePage(Model model) {
