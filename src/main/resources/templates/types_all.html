@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Types</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr>
+        <th>Type Id</th>
+        <th>Kind</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+    </tr>
+    <tr th:each="type : ${allTypes}">
+        <td th:text="${type.getTypeID()}"></td>
+        <td th:text="${type.getKind()}"></td>
+        <td th:text="${type.getDate().getDate()}"></td>
+        <td th:text="${type.getStartTime()}">Age</td>
+        <td th:text="${type.getEndTime()}"></td>
+    </tr>
+</table>
+</body>
+</html>

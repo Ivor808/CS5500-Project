@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Data</title>
+</head>
+<body>
+<a th:href="@{/records/add-record}">Add a new Date Log</a>
+<table style="width:100%">
+    <tr>
+        <th>Date</th>
+        <th>Calories Idle</th>
+        <th>Last Update</th>
+    </tr>
+    <tr th:each="log : ${allDates}">
+        <td th:text="${log.getDate()}"></td>
+        <td th:text="${log.getCaloriesIdle()}"></td>
+        <td th:text="${log.getLastUpdate()}">Age</td>
+        <td><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></td>
+    </tr>
+</table>
+</body>
+</html>

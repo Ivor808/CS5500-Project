@@ -40,6 +40,10 @@ public class Type {
             '}';
   }
 
+  public String getKind() {
+    return "Not Defined";
+  }
+
   public void setTypeID(long typeID) {
     this.typeID = typeID;
   }
