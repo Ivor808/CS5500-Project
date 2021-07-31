@@ -7,10 +7,7 @@ import com.CS5500.springbootinfrastructure.repos.DateLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
@@ -21,6 +18,19 @@ public class WebpageController {
 
     @Autowired
     private DateLogRepository dateRepo;
+
+    @GetMapping("records/delete/{date}")
+    public String deleteLog(@PathVariable("date") Date date, Model model) {
+        try {
+            dateRepo.deleteById(date);
+            return "update_success";
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        model.addAttribute("error", "could not delete log");
+        return "error_page";
+    }
 
     @PostMapping("/records/add-record")
     public String greetingSubmit(@ModelAttribute DateLogContModel newLog, Model model) {
@@ -35,7 +45,7 @@ public class WebpageController {
 
         dateRepo.save(dl);
 
-        return "save_success";
+        return "update_success";
     }
 
     @GetMapping("/records/add-record")

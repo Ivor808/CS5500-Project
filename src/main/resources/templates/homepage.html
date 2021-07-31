@@ -11,12 +11,15 @@
         <th>Date</th>
         <th>Calories Idle</th>
         <th>Last Update</th>
+        <th>Types</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="log : ${allDates}">
         <td th:text="${log.getDate()}"></td>
         <td th:text="${log.getCaloriesIdle()}"></td>
         <td th:text="${log.getLastUpdate()}">Age</td>
         <td><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></td>
+        <td><a th:href="@{/records/delete/{date}(date=${log.getDate()})}">Delete</a></td>
     </tr>
 </table>
 </body>
