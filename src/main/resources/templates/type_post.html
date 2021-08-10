@@ -2,28 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Types For Record</title>
+    <title>Add Type</title>
 </head>
 <body>
-<a th:href="@{/records/add-type}">Add a new Type</a>
-<table style="width:100%">
-    <tr>
-        <th>Type Id</th>
-        <th>Kind</th>
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Activities</th>
-    </tr>
-    <tr th:each="type : ${typesForDate}">
-        <td th:text="${type.getTypeID()}"></td>
-        <td th:text="${type.getKind()}"></td>
-        <td th:text="${type.getDate().getDate()}"></td>
-        <td th:text="${type.getStartTime()}">Age</td>
-        <td th:text="${type.getEndTime()}"></td>
-        <td><a th:href="@{/records/types/{tid}/activities(tid=${type.getTypeID()})}">Activities</a></td>
-    </tr>
-</table>
+<h1> Add new Type</h1>
+<form action="#" th:action="@{/records/add-record}" th:object="${newLog}" method="post">
+    <p>Date(mm/dd/yyyy): <input type="text" th:field="*{mm}" />
+        <input type="text" th:field="*{dd}" />
+        <input type="text" th:field="*{yyyy}" /></p>
+    <p>Calories Idle: <input type="text" th:field="*{caloriesIdle}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 

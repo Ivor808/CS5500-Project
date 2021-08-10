@@ -2,6 +2,7 @@ package com.CS5500.springbootinfrastructure.controller;
 
 import com.CS5500.springbootinfrastructure.dao.Activity;
 import com.CS5500.springbootinfrastructure.dao.DateLog;
+import com.CS5500.springbootinfrastructure.dao.Move;
 import com.CS5500.springbootinfrastructure.dao.Type;
 import com.CS5500.springbootinfrastructure.repos.DateLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +64,59 @@ public class WebpageController {
     public String addRecordPage(Model model) {
         model.addAttribute("newLog", new DateLogContModel());
         return "date_post";
+    }
+
+    @GetMapping("/records/{date}/add-type")
+    public String getAddTypePage(@PathVariable Date date, Model model) {
+        model.addAttribute("newType", new TypeContModel());
+        model.addAttribute("date", date);
+        return "type_post";
+    }
+
+    @PostMapping("/records/{date}/add-type")
+    public String addType(@PathVariable Date date, @ModelAttribute TypeContModel type) {
+        Optional<DateLog> opt = dateRepo.findById(date);
+        if (opt.isEmpty()) {
+            return "error_page";
+        }
+
+        DateLog dl = opt.get();
+        List<Type> lt = dl.getTypes();
+        Type toAdd = new Type();
+        toAdd.setDate(dl);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        int yyyy = cal.get(Calendar.YEAR);
+        int mm = cal.get(Calendar.MONTH);
+        int dd = cal.get(Calendar.DAY_OF_MONTH);
+
+        int hh = type.start_hh;
+        int min = type.start_mm;
+        int ss = type.start_ss;
+        Timestamp start = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + hh + ":" +
+                mm + ":" + ss);
+        toAdd.setStartTime(start);
+
+        hh = type.end_hh;
+        min = type.end_mm;
+        ss = type.end_ss;
+
+        Timestamp end = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + hh + ":" +
+                mm + ":" + ss);
+        toAdd.setEndTime(end);
+        toAdd.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+
+        String kind = type.type;
+
+        switch (kind) {
+            case "Move":
+                Move newMove = (Move) toAdd;
+
+        }
+        lt.add(type);
+        return "update_success";
     }
 
     @GetMapping(path="/records")
