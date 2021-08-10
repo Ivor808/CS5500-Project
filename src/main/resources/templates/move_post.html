@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new move type</title>
+</head>
+<body>
+<h1>Add new move type</h1>
+<form action="#" th:action="@{/records/{date}/add-type/move(date=${date})}" th:object="${newType}" method="post">
+    <p>Start time(hh:mm:ss): <input type="text" th:field="*{start_hh}" />
+        <input type="text" th:field="*{start_mm}" />
+        <input type="text" th:field="*{start_ss}" /></p>
+    <p>End time(hh:mm:ss): <input type="text" th:field="*{end_hh}" />
+        <input type="text" th:field="*{end_mm}" />
+        <input type="text" th:field="*{end_ss}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>

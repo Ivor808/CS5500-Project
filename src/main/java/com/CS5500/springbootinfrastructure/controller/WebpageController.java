@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -26,6 +27,7 @@ public class WebpageController {
     public String deleteLog(@PathVariable("date") Date date, Model model) {
         try {
             dateRepo.deleteById(date);
+            model.addAttribute("return_url", "/records");
             return "update_success";
         } catch(Exception e) {
             e.printStackTrace();
@@ -33,6 +35,27 @@ public class WebpageController {
 
         model.addAttribute("error", "could not delete log");
         return "error_page";
+    }
+
+    @Transactional
+    @GetMapping("records/delete/{date}/move/{typeid}")
+    public String deleteType(@PathVariable("date") Date date, @PathVariable("typeid") long id, Model model) {
+        try {
+            Optional<DateLog> opt = dateRepo.findById(date);
+            if (opt.isEmpty()) {
+                return "error_page";
+            }
+
+            DateLog dl = opt.get();
+            List<Type> lt = dl.getTypes();
+
+            dateRepo.deleteTypeById(id);
+            model.addAttribute("return_url", "/records/" + date + "/types");
+            return "update_success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error_page";
+        }
     }
 
     @PostMapping("/records/add-record")
@@ -47,7 +70,7 @@ public class WebpageController {
         dl.timestampLastUpdate();
 
         dateRepo.save(dl);
-
+        model.addAttribute("return_url", "/records");
         return "update_success";
     }
 
@@ -66,15 +89,15 @@ public class WebpageController {
         return "date_post";
     }
 
-    @GetMapping("/records/{date}/add-type")
+    @GetMapping("/records/{date}/add-type/move")
     public String getAddTypePage(@PathVariable Date date, Model model) {
         model.addAttribute("newType", new TypeContModel());
         model.addAttribute("date", date);
-        return "type_post";
+        return "move_post";
     }
 
-    @PostMapping("/records/{date}/add-type")
-    public String addType(@PathVariable Date date, @ModelAttribute TypeContModel type) {
+    @PostMapping("/records/{date}/add-type/move")
+    public String addType(@PathVariable("date") Date date, @ModelAttribute TypeContModel type, Model model) {
         Optional<DateLog> opt = dateRepo.findById(date);
         if (opt.isEmpty()) {
             return "error_page";
@@ -82,21 +105,21 @@ public class WebpageController {
 
         DateLog dl = opt.get();
         List<Type> lt = dl.getTypes();
-        Type toAdd = new Type();
+        Move toAdd = new Move();
         toAdd.setDate(dl);
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
 
         int yyyy = cal.get(Calendar.YEAR);
-        int mm = cal.get(Calendar.MONTH);
+        int mm = cal.get(Calendar.MONTH) + 1;
         int dd = cal.get(Calendar.DAY_OF_MONTH);
 
         int hh = type.start_hh;
         int min = type.start_mm;
         int ss = type.start_ss;
         Timestamp start = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + hh + ":" +
-                mm + ":" + ss);
+                min + ":" + ss);
         toAdd.setStartTime(start);
 
         hh = type.end_hh;
@@ -104,18 +127,15 @@ public class WebpageController {
         ss = type.end_ss;
 
         Timestamp end = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + hh + ":" +
-                mm + ":" + ss);
+                min + ":" + ss);
         toAdd.setEndTime(end);
         toAdd.setLastUpdate(new Timestamp(System.currentTimeMillis()));
 
-        String kind = type.type;
+        lt.add(toAdd);
+        dl.setTypes(lt);
+        dateRepo.save(dl);
 
-        switch (kind) {
-            case "Move":
-                Move newMove = (Move) toAdd;
-
-        }
-        lt.add(type);
+        model.addAttribute("return_url", "/records/" + date + "/types");
         return "update_success";
     }
 
@@ -140,6 +160,7 @@ public class WebpageController {
             DateLog dateLog = (DateLog) optionalDL.get();
             List<Type> types = dateLog.getTypes();
             model.addAttribute("typesForDate", types);
+            model.addAttribute("date", date);
 
             return "types_id";
         }

@@ -1,6 +1,7 @@
 package com.CS5500.springbootinfrastructure.repos;
 
 import com.CS5500.springbootinfrastructure.dao.*;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -30,4 +31,8 @@ public interface DateLogRepository extends CrudRepository<DateLog, Date> {
 
     @Query(value = "select p from Place p")
     List<Place> getJSONPlaces();
+
+    @Modifying
+    @Query(value = "delete from Type t where t.typeID = ?1")
+    void deleteTypeById(long id);
 }
