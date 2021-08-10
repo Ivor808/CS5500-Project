@@ -96,3 +96,18 @@
 .content-container {
   padding-left: 220px;
 }
+table {
+  border:1px solid black;
+
+  width:fit-content;
+  min-width:75%;
+  margin:auto
+}
+
+tr {
+  border-bottom:1px dashed black;
+  background:#eee;
+}
+tr:nth-child(odd) {
+  background:#ddd;
+}
