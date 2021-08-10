@@ -47,6 +47,20 @@ public class WebpageController {
 
         return "update_success";
     }
+    @PutMapping("/records/edit-record")
+    public String editSubmit(@ModelAttribute DateLogContModel newLog, Model model) {
+        model.addAttribute("newLog", newLog);
+
+        DateLog dl = dateRepo.getDateLogByDateIs(Date.valueOf(newLog.getYyyy() + "-"
+            + newLog.getMm() + "-"
+            + newLog.getDd()));
+        dl.setCaloriesIdle(newLog.getCaloriesIdle());
+        dl.timestampLastUpdate();
+        dateRepo.save(dl);
+
+        return "update_success";
+    }
+
 
     /*@PostMapping("/records/{date}/add-type")
     public String addType(Type type) {
@@ -63,6 +77,27 @@ public class WebpageController {
         return "date_post";
     }
 
+    @GetMapping("/records/edit-record")
+    public String editRecordPage(Model model) {
+        model.addAttribute("newLog", new DateLogContModel());
+        return "date_Edit";
+    }
+    @GetMapping("/records/edit-this")
+    public String editSubmit(Model model) {
+        model.addAttribute("newLog", new DateLogContModel());
+        return "edit_this";
+    }
+    @PutMapping("/records/edit-this/{date}")
+    public String editThisRecord(@ModelAttribute DateLogContModel newLog, Date date,Model model) {
+        model.addAttribute("newLog", new DateLogContModel());
+        DateLog dl = dateRepo.getDateLogByDateIs(date);
+        dl.setCaloriesIdle(newLog.getCaloriesIdle());
+        dl.timestampLastUpdate();
+        dateRepo.save(dl);
+        return "update_success";
+    }
+
+
     @GetMapping(path="/records")
     public String fetchHomePage(Model model) {
         List<DateLog> logs = dateRepo.getJSONDates();
@@ -75,6 +110,12 @@ public class WebpageController {
         List<Type> types = dateRepo.getJSONTypes();
         model.addAttribute("allTypes", types);
         return "types_all";
+    }
+
+    @PutMapping("/records/{date}/edit-record")
+    public String editDateLog(@PathVariable("date") Date date, Model model) {
+
+        return "save_success";
     }
 
     @GetMapping(path = "/records/{date}/types")
@@ -90,6 +131,8 @@ public class WebpageController {
 
         return "types_error";
     }
+
+
 
     @GetMapping(path = "records/types/{tid}/activities")
     public String fetchActivitiesByTypeId(@PathVariable("tid") long tid, Model model) {

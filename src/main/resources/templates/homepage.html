@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<style>
+    .link-container {
+        display:flex;
+        justify-content:center;
+        width:100%;
+        margin:auto;
+        user-select: none;
+    }
+
+    .link-container > a {
+        padding:20px;
+        margin:20px;
+        font-weight:800;
+    }
+
+    table {
+        border:1px solid black;
+
+        width:fit-content;
+        min-width:75%;
+        margin:auto
+    }
+
+    tr {
+        border-bottom:1px dashed black;
+        background:#eee;
+    }
+    tr:nth-child(odd) {
+        background:#ddd;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Activity Data</title>
 </head>
-<body>
-<a th:href="@{/records/add-record}">Add a new Date Log</a>
-<table style="width:100%">
+
+<body style="background-color:#eaf4ec;">
+<div class = "link-container">
+    <a th:href="@{/records/add-record}">Add a new Date Log</a>
+
+    <br><a th:href="@{/records/edit-record}">Edit a Date Log</a>
+</div>
+
+<table>
     <tr>
         <th>Date</th>
         <th>Calories Idle</th>
         <th>Last Update</th>
         <th>Types</th>
+        <th>Edit</th>
         <th>Delete</th>
     </tr>
     <tr th:each="log : ${allDates}">
@@ -19,16 +57,26 @@
         <td th:text="${log.getCaloriesIdle()}"></td>
         <td th:text="${log.getLastUpdate()}">Age</td>
         <td><a th:href="@{/records/{date}/types(date=${log.getDate()})}">Types</a></td>
+        <td><a th:href="@{/records/edit-record/{date}(date=${log.getDate()})}">Edit</a></td>
         <td><a th:href="@{/records/delete/{date}(date=${log.getDate()})}">Delete</a></td>
+
     </tr>
 </table>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</body>
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+      integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ"
+      crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
 </html>

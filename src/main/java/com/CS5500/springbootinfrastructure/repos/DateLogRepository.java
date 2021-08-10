@@ -13,6 +13,9 @@ import java.util.Map;
 
 public interface DateLogRepository extends CrudRepository<DateLog, Date> {
 
+    @Query(value = "select d from DateLog d where d.date = ?1")
+    DateLog getDateLogByDateIs(Date curr);
+
     @Query(value = "select d from DateLog d")
     List<DateLog> getJSONDates();
 

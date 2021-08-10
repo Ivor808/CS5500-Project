@@ -3,6 +3,7 @@ package com.CS5500.springbootinfrastructure.controller;
 import com.CS5500.springbootinfrastructure.dao.*;
 import com.CS5500.springbootinfrastructure.repos.*;
 import java.time.LocalDate;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,14 @@ public class MainController {
         n.timestampLastUpdate();
         dateLogRepository.save(n);
         return "Saved";
+    }
+
+    @PutMapping(path="/datelog")
+    public @ResponseBody String editDateLog(@RequestParam String date, @RequestParam Integer caloriesIdle) {
+        DateLog dl = dateLogRepository.getDateLogByDateIs(Date.valueOf(date));
+        dl.setCaloriesIdle(caloriesIdle);
+        dateLogRepository.save(dl);
+        return "Updated!";
     }
 
     @GetMapping(path = "/datelog")
