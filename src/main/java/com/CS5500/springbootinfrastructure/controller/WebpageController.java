@@ -5,6 +5,7 @@ import com.CS5500.springbootinfrastructure.dao.DateLog;
 import com.CS5500.springbootinfrastructure.dao.Type;
 import com.CS5500.springbootinfrastructure.repos.DateLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +13,16 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Controller
 public class WebpageController {
 
     @Autowired
     private DateLogRepository dateRepo;
+
 
     @GetMapping("records/delete/{date}")
     public String deleteLog(@PathVariable("date") Date date, Model model) {
