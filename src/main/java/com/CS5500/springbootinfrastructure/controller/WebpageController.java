@@ -48,6 +48,15 @@ public class WebpageController {
         return "update_success";
     }
 
+    /*@PostMapping("/records/{date}/add-type")
+    public String addType(Type type) {
+        DateLog dl = dateRepo.findById(date);
+        List<Type> lt = dl.getTypes();
+        lt.add(type);
+        dl.setTypes(lt);
+        dateRepo.save(dl);
+    }*/
+
     @GetMapping("/records/add-record")
     public String addRecordPage(Model model) {
         model.addAttribute("newLog", new DateLogContModel());
