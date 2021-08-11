@@ -7,33 +7,34 @@
     <title>Add Log</title>
 </head>
 <header>
-    <div class="sidebar-container">
-        <div class="sidebar-logo">
-            Activity Data Tracker
-        </div>
-        <ul class="sidebar-navigation">
-            <li class="header">Navigation</li>
-            <li>
-                <a href="http://localhost:8080/records">
-                    <i class="fa fa-home" aria-hidden="true"></i> Homepage
-                </a>
-            </li>
-            <li class="header">Modify Data</li>
-            <li>
-                <a href="http://localhost:8080/records/add-record">
-                    <i class="fa fa-users" aria-hidden="true"></i> Add a New Entry
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:8080/records/edit-record">
-                    <i class="fa fa-cog" aria-hidden="true"></i> Edit an Existing Entry
-                </a>
-            </li>
-        </ul>
-    </div>
 </header>
 <body>
 <main class="flex-shrink-0">
+    <div class="row">
+        <div class="col-md-1">
+            <div class="sidebar-container">
+                <div class="sidebar-logo">
+                    Activity Data Tracker
+                </div>
+                <ul class="sidebar-navigation">
+                    <li class="header">Navigation</li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home" aria-hidden="true"></i> Homepage
+                        </a>
+                    </li>
+                    <li class="header">Modify Data</li>
+                    <li>
+                        <a th:href="@{/records/add-record}">
+                            <i class="fa fa-users" aria-hidden="true"></i> Add a New Date Log
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
     <div class="container">
             <div class="row">
                 <div class="col-md-1">
@@ -50,8 +51,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
                 <div class="col-md-11">
                     <div class="container">
