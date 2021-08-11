@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link th:href="@{/style.css}" rel="stylesheet">
-    <title>Edit a Log</title>
+    <title>Update Success</title>
 </head>
-<header>
-</header>
 <body>
 <main class="flex-shrink-0">
     <div class="row">
@@ -19,25 +17,19 @@
                 <ul class="sidebar-navigation">
                     <li class="header">Navigation</li>
                     <li>
-                        <a href="#">
+                        <a th:href="@{/records}">
                             <i class="fa fa-home" aria-hidden="true"></i> Homepage
-                        </a>
-                    </li>
-                    <li class="header">Modify Data</li>
-                    <li>
-                        <a th:href="@{/records/add-record}">
-                            <i class="fa fa-users" aria-hidden="true"></i> Add a New Date Log
                         </a>
                     </li>
                 </ul>
             </div>
-
-
+        </div>
+        <div class="col-md-11">
+            <h2> Update Successful!</h2>
+            <a th:href="@{{return_url}(return_url=${return_url})}">go back</a>
         </div>
     </div>
-    <div class="container">
-        <h2> Update Successful!</h2>
-        <a th:href="@{{return_url}(return_url=${return_url})}">go back</a>
+</main>
 <footer class="footer fixed-bottom mt-auto py-3 bg-light text-center">
     <div class="container">
         <span class="text-muted">CS5500: Ivor, Akash, Karan 2021</span>
