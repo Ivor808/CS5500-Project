@@ -10,6 +10,14 @@ import javax.persistence.Entity;
 @JsonTypeName("off")
 public class Off extends Type {
 
+    public Off() {
+
+    }
+
+    public Off(Off other) {
+        super(other);
+    }
+
     @Override
     public String getKind() {
         return "Off";

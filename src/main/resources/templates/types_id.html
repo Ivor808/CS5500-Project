@@ -5,6 +5,7 @@
     <title>Types For Record</title>
 </head>
 <body>
+<a th:href="@{/records/{date}/add-type/move(date=${date})}">Add a new move type</a>
 <table style="width:100%">
     <tr>
         <th>Type Id</th>
@@ -13,6 +14,7 @@
         <th>Start Time</th>
         <th>End Time</th>
         <th>Activities</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="type : ${typesForDate}">
         <td th:text="${type.getTypeID()}"></td>
@@ -21,6 +23,7 @@
         <td th:text="${type.getStartTime()}">Age</td>
         <td th:text="${type.getEndTime()}"></td>
         <td><a th:href="@{/records/types/{tid}/activities(tid=${type.getTypeID()})}">Activities</a></td>
+        <td><a th:href="@{/records/delete/{date}/move/{tid}(date=${date}, tid=${type.getTypeID()})}">Delete</a></td>
     </tr>
 </table>
 <!-- Latest compiled and minified CSS -->

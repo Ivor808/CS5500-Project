@@ -9,6 +9,7 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 import javax.persistence.*;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -24,6 +25,18 @@ import java.util.List;
         @JsonSubTypes.Type(value=Off.class, name = "off")
 })
 public class Type {
+
+  public Type(Type other) {
+    typeID = other.typeID;
+    startTime = other.startTime;
+    endTime = other.endTime;
+    activities = new ArrayList<>(other.activities);
+    lastUpdate = other.lastUpdate;
+  }
+
+  public Type() {
+
+  }
 
   public long getTypeID() {
     return typeID;

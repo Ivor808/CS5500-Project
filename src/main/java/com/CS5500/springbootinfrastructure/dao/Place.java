@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,21 @@ public class Place extends Type{
     private String type;
 
     private Integer place_id;
+
+    public Place() {
+
+    }
+
+    public Place(Place other) {
+        super(other);
+        name = other.name;
+        type = other.type;
+        place_id = other.place_id;
+        location = other.location;
+        foursquareId = other.foursquareId;
+        foursquareCategoryIds = new ArrayList<>(other.foursquareCategoryIds);
+        facebookPlaceId = other.facebookPlaceId;
+    }
 
     @Override
     public String getKind() {
