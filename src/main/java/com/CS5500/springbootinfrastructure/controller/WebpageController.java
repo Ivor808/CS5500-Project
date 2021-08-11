@@ -163,13 +163,14 @@ public class WebpageController {
         model.addAttribute("newLog", new DateLogContModel());
         return "date_Edit";
     }
-    @GetMapping("/records/edit-this")
-    public String editSubmit(Model model) {
+    @GetMapping("/records/edit-record/{date}")
+    public String editSubmit(@PathVariable("date") Date date, Model model) {
         model.addAttribute("newLog", new DateLogContModel());
+        model.addAttribute("date", date);
         return "edit_this";
     }
-    @PutMapping("/records/edit-this/{date}")
-    public String editThisRecord(@ModelAttribute DateLogContModel newLog, Date date,Model model) {
+    @PutMapping("/records/edit-record/{date}")
+    public String editThisRecord(@ModelAttribute DateLogContModel newLog, @PathVariable("date") Date date,Model model) {
         model.addAttribute("newLog", new DateLogContModel());
         DateLog dl = dateRepo.getDateLogByDateIs(date);
         dl.setCaloriesIdle(newLog.getCaloriesIdle());

@@ -5,11 +5,47 @@
   <title>Edit the log</title>
 </head>
 <body>
+<div class="row">
+  <div class="col-md-1">
+    <div class="sidebar-container">
+      <div class="sidebar-logo">
+        Activity Data Tracker
+      </div>
+      <ul class="sidebar-navigation">
+        <li class="header">Navigation</li>
+        <li>
+          <a th:href="@{/records}">
+            <i class="fa fa-home" aria-hidden="true"></i> Homepage
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+  <div class="col-md-11">
+    <div class="container">
+      <div class="content-container">
+
+        <div class="container-fluid">
+
+          <!-- Main component for a primary marketing message or call to action -->
+          <div class="jumbotron">
+            <h1>Edit a Date Log</h1>
+
+          </div>
+
+        </div>
+      </div>
+      <form th:action="@{/records/edit-record/{date}(date = ${date})}" th:object="${newLog}" th:method="PUT" method="post">
+        <p>Calories Idle: <input type="text" th:field="*{caloriesIdle}"/></p>
+        <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+      </form> </div>
+  </div>
+</div>
+
 <h1> Edit a Date Log</h1>
-<form action="#" th:action="@{/records/edit-this" th:object="${newLog}" th:method="PUT" method="post">
-  <p>Calories Idle: <input type="text" th:field="*{caloriesIdle}"/></p>
-  <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
-</form>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
