@@ -108,7 +108,7 @@ public class WebpageController {
     }
 
     @PostMapping("/records/types/{tid}/add-activity")
-    public String addType(@PathVariable("tid") long tid, @ModelAttribute ActivityContModel activity) {
+    public String addType(@PathVariable("tid") long tid, @ModelAttribute ActivityContModel activity, Model model) {
         Type type = dateRepo.getTypeById(tid);
         if (type == null) {
             return "error_page";
@@ -147,7 +147,6 @@ public class WebpageController {
         toAdd.setDuration(activity.getDuration());
         toAdd.setManual(activity.getManual());
         toAdd.setSteps(activity.getSteps());
-
 
         act.add(toAdd);
         return "update_success";
