@@ -1,6 +1,8 @@
 package com.CS5500.springbootinfrastructure.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,10 +29,7 @@ class MainControllerTest {
 
   @Test
   void addNewDateLog() throws Exception {
-    RequestBuilder request = MockMvcRequestBuilders.post("/dateLog").param("caloriesIdle","15");
-    MvcResult result = mvc.perform(request).andReturn();
-    //shouldnt return anything since we are mocking
-    assertEquals(result.getResponse().getContentAsString(),"Saved");
+    mvc.perform(post("https://localhost:8080/activitydb/datelog?caloriesIdle=8000")).andExpect(status().isOk());
   }
 
   @Test
@@ -38,7 +37,7 @@ class MainControllerTest {
     RequestBuilder request = MockMvcRequestBuilders.get("/dateLog");
     MvcResult result = mvc.perform(request).andReturn();
     //shouldnt return anything since we are mocking
-    assertEquals(result.getResponse().getContentLengthLong(),0.0);
+    assertEquals(0.0,result.getResponse().getContentLengthLong());
   }
 
   @Test
@@ -46,14 +45,13 @@ class MainControllerTest {
     RequestBuilder request = MockMvcRequestBuilders.get("/activity");
     MvcResult result = mvc.perform(request).andReturn();
     //shouldnt return anything since we are mocking
-    assertEquals(result.getResponse().getContentLengthLong(),0.0);
+    assertEquals(0.0,result.getResponse().getContentLengthLong());
   }
 
   @Test
   void getAllMove() throws Exception {
     RequestBuilder request = MockMvcRequestBuilders.get("/move");
     MvcResult result = mvc.perform(request).andReturn();
-    //shouldnt return anything since we are mocking
     assertEquals(result.getResponse().getContentLengthLong(),0.0);
   }
 
