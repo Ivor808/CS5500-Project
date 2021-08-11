@@ -229,4 +229,50 @@ public class WebpageController {
 
         return "activities_error";
     }
+
+    @PostMapping("/records/types/{tid}/add-activity")
+    public String addType(@PathVariable("tid") long tid, @ModelAttribute ActivityContModel activity, Model model) {
+        Type type = dateRepo.getTypeById(tid);
+        if (type == null) {
+            return "error_page";
+        }
+
+        List<Activity> act = type.getActivities();
+
+        Activity toAdd = new Activity();
+
+        toAdd.setAct_group(activity.getGroup());
+
+        long startTime = type.getStartTime().getTime();
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(startTime);
+        int yyyy = cal.get(Calendar.YEAR);
+        int mm = cal.get(Calendar.MONTH);
+        int dd = cal.get(Calendar.DAY_OF_MONTH);
+
+        int start_hh = activity.getStart_hh();
+        int start_mm = activity.getStart_mm();
+        int start_ss = activity.getStart_ss();
+        Timestamp start = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + start_hh + ":" +
+                start_mm + ":" + start_ss);
+        toAdd.setStartTime(start);
+
+        int end_hh = activity.getEnd_hh();
+        int end_mm = activity.getEnd_mm();
+        int end_ss = activity.getEnd_ss();
+        Timestamp end = Timestamp.valueOf(yyyy + "-" + mm + "-" + dd + " " + end_hh + ":" +
+                end_mm + ":" + end_ss);
+        toAdd.setEndTime(end);
+
+        toAdd.setCalories(activity.getCalories());
+        toAdd.setDistance(activity.getDistance());
+        toAdd.setDuration(activity.getDuration());
+        toAdd.setManual(activity.getManual());
+        toAdd.setSteps(activity.getSteps());
+
+        act.add(toAdd);
+        return "update_success";
+    }
+
 }
