@@ -1,5 +1,5 @@
 <div>
-  <h1 align="center">Health Data Tool Kit <img src='https://i.imgur.com/z4ZDxJg.png' width="50" height="50"> </img> </h1>
+  <h1 align="center"><img src='https://i.imgur.com/z4ZDxJg.png' width="50" height="50"> </img>  Health Data Tool Kit </h1>
  </div>
 <h6 align="center"> Created by Ivor, Akash, Karan </h6>
 
