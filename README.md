@@ -28,10 +28,16 @@ Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
 remote database is down or the data has been erased, follow the steps below to make the program work on your local MySQL server:
 
+### Load Data to MySQL Server
 1) Edit the application properties to fit your local MySQL server's configurations.
 2) Uncomment the code in the saveToRemote function in the SpringbootInfrastructureApplication class. It currently saves the first 5 records but you can
 modify the code in order to save more records.
 3) Run the springboot application. This will execute DDL commands and you will have a populated schema on your local server.
+
+
+```java
+-- Put json data loading here--
+```
 
 Steps to run:
 
