@@ -35,7 +35,7 @@ modify the code in order to save more records.
 3) Run the springboot application. This will execute DDL commands and you will have a populated schema on your local server.
 
 
-```java
+```
 -- Put json data loading here--
 ```
 
@@ -64,3 +64,6 @@ REST endpoints (they are functional):
 2) Running Springboot Applications: https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/using-boot-running-your-application.html
 3) Springboot and MySQL: https://spring.io/guides/gs/accessing-data-mysql/
 4) https://www.baeldung.com/hibernate-inheritance
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
