@@ -28,7 +28,7 @@ Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
 remote database is down or the data has been erased, follow the steps below to make the program work on your local MySQL server:
 
-### Load Data to MySQL Server
+### Load Data to MySQL Server via JSON
 1) Edit the application properties to fit your local MySQL server's configurations.
 2) Uncomment the code in the saveToRemote function in the SpringbootInfrastructureApplication class. It currently saves the first 5 records but you can
 modify the code in order to save more records.
