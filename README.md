@@ -1,6 +1,7 @@
 # CS5500-Project
 ## Features
 ### Main Page
+* Users can view their loaded data and add new data from the home page. Each entry can be further viewed with the types button. They can also be edited and deleted with the respective button.
 ![test](https://i.imgur.com/gjcaHHM.png)
 
 ### Add an Entry
