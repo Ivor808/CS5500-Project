@@ -5,15 +5,19 @@
 ![test](https://i.imgur.com/gjcaHHM.png)
 
 ### Add an Entry
+* Database etries can be added manually from this page. Only adding the date and calories is currently supported; types and activities will be missing from these entries.
 ![add](https://i.imgur.com/ZnXw9PB.png)
 
 ### Edit an Entry
+* Date entries are edited here to change their calories idle.
 ![edit](https://i.imgur.com/ok6bzhT.png)
 
 ### View Activity Types
+* A date entry can be further expanded to view a days activities done.
 ![view2](https://i.imgur.com/zWnDdCJ.png)
 
 ### View Specific Day Activity
+* Each activity can then be further examined to view what was done during that activity.
 ![view3](https://i.imgur.com/jsYb0nT.png)
 
 ## How to run
