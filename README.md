@@ -1,4 +1,4 @@
-# Health Data Tool Kit
+<p align="center"> # Health Data Tool Kit </p>
 ###### Created by Ivor, Akash, Karan
 ## Features Delivered
 ### Main Page
