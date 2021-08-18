@@ -1,7 +1,7 @@
 # CS5500-Project
 ## Features
 ### Main Page
-![test] (https://i.imgur.com/gjcaHHM.png)
+![test](https://i.imgur.com/gjcaHHM.png)
 
 ## How to run
 Database Used:
