@@ -1,5 +1,5 @@
 <div>
-  <h1 align="center">Health Data Tool Kit <img src='https://e7.pngegg.com/pngimages/285/703/png-clipart-medicine-staff-of-hermes-health-symbol-logo-health-text-medical-care-thumbnail.png'> </img> </h1>
+  <h1 align="center">Health Data Tool Kit <img src='https://i.imgur.com/z4ZDxJg.png'> </img> </h1>
  </div>
 <h6 align="center"> Created by Ivor, Akash, Karan </h6>
 
