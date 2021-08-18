@@ -27,6 +27,10 @@ Get all the move objects: http://localhost:8080/activitydb/move
 Get all the place objects: http://localhost:8080/activitydb/place
 Get all the type objects: http://localhost:8080/activitydb/type
 
+## Code Metrics
+
+## Known Problems
+
 
 ## Resources
 1) Remote Database: https://db4free.net/
