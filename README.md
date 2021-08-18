@@ -49,7 +49,7 @@ That's it! The remote database has been prepopulated using the commented code in
 You can use the following REST endpoints to query the data (all of them are get operations)
 
 ## REST API
-REST endpoints (they are functional):
+REST endpoints:
 * Get all the date objects: http://localhost:8080/activitydb/datelog
 * Get all the activity objects: http://localhost:8080/activitydb/activity
 * Get all the move objects: http://localhost:8080/activitydb/move
