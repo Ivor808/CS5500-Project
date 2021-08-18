@@ -1,6 +1,8 @@
 # CS5500-Project
-Project repo for the Summer 2021 CS5500 project.
+## Features
 
+
+## How to run
 Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
 remote database is down or the data has been erased, follow the steps below to make the program work on your local MySQL server:
@@ -17,6 +19,7 @@ Steps to run:
 That's it! The remote database has been prepopulated using the commented code in the saveToRemote function in the SpringbootInfrastructureApplication class.
 You can use the following REST endpoints to query the data (all of them are get operations)
 
+## REST API
 REST endpoints (they are functional):
 Get all the date objects: http://localhost:8080/activitydb/datelog
 Get all the activity objects: http://localhost:8080/activitydb/activity
@@ -25,7 +28,7 @@ Get all the place objects: http://localhost:8080/activitydb/place
 Get all the type objects: http://localhost:8080/activitydb/type
 
 
-Resources:
+## Resources
 1) Remote Database: https://db4free.net/
 2) Running Springboot Applications: https://docs.spring.io/spring-boot/docs/1.5.16.RELEASE/reference/html/using-boot-running-your-application.html
 3) Springboot and MySQL: https://spring.io/guides/gs/accessing-data-mysql/
