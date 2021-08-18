@@ -39,9 +39,11 @@ modify the code in order to save more records.
 -- Put json data loading here--
 ```
 
-Steps to run:
+### Run Spring Boot Application
 
-1) Run the springboot application
+1) Right click SpringBootInfrastructureApplication in your IDE and select run. This will load the web server and front end at http://localhost:8080/records
+
+![run](https://i.imgur.com/yNO7Jph.png)
 
 That's it! The remote database has been prepopulated using the commented code in the saveToRemote function in the SpringbootInfrastructureApplication class.
 You can use the following REST endpoints to query the data (all of them are get operations)
