@@ -1,4 +1,4 @@
-<p align="center"> # Health Data Tool Kit </p>
+<h1 align="center">Health Data Tool Kit </h1>
 ###### Created by Ivor, Akash, Karan
 ## Features Delivered
 ### Main Page
