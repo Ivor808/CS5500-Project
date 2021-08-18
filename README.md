@@ -12,6 +12,9 @@
 ### View Activity Types
 ![view2](https://i.imgur.com/zWnDdCJ.png)
 
+### View Specific Day Activity
+![view3](https://i.imgur.com/jsYb0nT.png)
+
 ## How to run
 Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
