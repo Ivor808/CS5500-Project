@@ -20,6 +20,9 @@
 * Each activity can then be further examined to view what was done during that activity.
 ![view3](https://i.imgur.com/jsYb0nT.png)
 
+### JSON Data Loading
+--Karan to write--
+
 ## How to run
 Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
