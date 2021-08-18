@@ -9,6 +9,9 @@
 ### Edit an Entry
 ![edit](https://i.imgur.com/ok6bzhT.png)
 
+### View Activity Types
+![view2](https://i.imgur.com/zWnDdCJ.png)
+
 ## How to run
 Database Used:
 We have used a remote database. You can look at its properties in the src/main/resources/application.properties file. In the event that the
