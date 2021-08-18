@@ -1,5 +1,5 @@
 <h1 align="center">Health Data Tool Kit </h1>
-###### Created by Ivor, Akash, Karan
+<h6 align="center"> Created by Ivor, Akash, Karan </h6>
 ## Features Delivered
 ### Main Page
 * Users can view their loaded data and add new data from the home page. Each entry can be further viewed with the types button. They can also be edited and deleted with the respective button.
