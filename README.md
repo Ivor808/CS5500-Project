@@ -64,6 +64,8 @@ REST endpoints:
 
 ## Known Problems
 
+1) Missing add/delete functionality for activities
+2) Inconvenient to load json data, since file path is hardcoded
 
 ## Resources
 * Remote Database: https://db4free.net/
