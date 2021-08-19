@@ -25,7 +25,8 @@
 ![view3](https://i.imgur.com/jsYb0nT.png)
 
 ### JSON Data Loading
---Karan to write--
+We used the Jackson library to load data from the JSON file into the remote database. We used annotations to specify how the json data was to ber interpreted as
+a java object, and then save those objects to the database.
 
 ## How to run
 Database Used:
