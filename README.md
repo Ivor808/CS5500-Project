@@ -62,6 +62,9 @@ REST endpoints:
 * Get all the type objects: http://localhost:8080/activitydb/type
 
 ## Code Metrics
+![CodeMR Report](codemrfinal.png)
+
+As we can see in our code MR report, most metrics are within acceptable range except for the java objects representing tables when it comes to lack of cohesion (i.e. they had a medium to high lack of cohesion). However, since this is not an unexpected result when it comes to objects whose sole purpose is to store data, we will not concern ourselves with it too much.
 
 ## Known Problems
 
